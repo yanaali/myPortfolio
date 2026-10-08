@@ -6,36 +6,54 @@ export const useSounds = () => {
   const releaseBufferRef = useRef<AudioBuffer | null>(null);
 
   useEffect(() => {
+    const controller = new AbortController();
+    let context: AudioContext | null = null;
+    // Browsers allow audio after the first click, tap, or physical key press.
+    const unlock = () => {
+      if (context?.state === "suspended") void context.resume().catch(() => {});
+    };
+    window.addEventListener("pointerdown", unlock);
+    window.addEventListener("pointerup", unlock);
+    window.addEventListener("keydown", unlock);
     const loadSound = async () => {
       try {
         const AudioContext = window.AudioContext || (window as any).webkitAudioContext;
         if (!AudioContext) return;
 
         const ctx = new AudioContext();
+        context = ctx;
         audioContextRef.current = ctx;
 
-        const response = await fetch('/assets/keycap-sounds/press.mp3');
+        const response = await fetch('/assets/keycap-sounds/press.mp3', { signal: controller.signal });
         const arrayBuffer = await response.arrayBuffer();
         const decodedBuffer = await ctx.decodeAudioData(arrayBuffer);
+        if (controller.signal.aborted) return;
         pressBufferRef.current = decodedBuffer;
 
-        const releaseResponse = await fetch('/assets/keycap-sounds/release.mp3');
+        const releaseResponse = await fetch('/assets/keycap-sounds/release.mp3', { signal: controller.signal });
         const releaseArrayBuffer = await releaseResponse.arrayBuffer();
         const releaseDecodedBuffer = await ctx.decodeAudioData(releaseArrayBuffer);
+        if (controller.signal.aborted) return;
         releaseBufferRef.current = releaseDecodedBuffer;
 
-        const confettiResponse = await fetch('/assets/sounds/vine-boom.mp3');
+        const confettiResponse = await fetch('/assets/sounds/vine-boom.mp3', { signal: controller.signal });
         const confettiArrayBuffer = await confettiResponse.arrayBuffer();
-        confettiBufferRef.current = await ctx.decodeAudioData(confettiArrayBuffer);
+        const confettiBuffer = await ctx.decodeAudioData(confettiArrayBuffer);
+        if (!controller.signal.aborted) confettiBufferRef.current = confettiBuffer;
       } catch (error) {
-        console.error("Failed to load keycap sound", error);
+        if (!controller.signal.aborted) console.error("Failed to load keycap sound", error);
       }
     };
 
     loadSound();
 
     return () => {
-      audioContextRef.current?.close();
+      controller.abort();
+      window.removeEventListener("pointerdown", unlock);
+      window.removeEventListener("pointerup", unlock);
+      window.removeEventListener("keydown", unlock);
+      if (audioContextRef.current === context) audioContextRef.current = null;
+      if (context && context.state !== "closed") void context.close().catch(() => {});
     };
   }, []);
 

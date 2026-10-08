@@ -357,10 +357,19 @@ function ElasticCursor() {
   // Preloader uses the blob as a loading bar.
   useEffect(() => {
     if (!jellyRef.current) return;
+    if (!isLoading) {
+      gsap.set(jellyRef.current, {
+        width: CURSOR_DIAMETER,
+        height: CURSOR_DIAMETER,
+        borderRadius: CURSOR_DIAMETER / 2,
+        opacity: cursorMoved ? 1 : 0,
+      });
+      return;
+    }
     jellyRef.current.style.height = "2rem";
     jellyRef.current.style.borderRadius = "1rem";
     jellyRef.current.style.width = loadingPercent * 2 + "vw";
-  }, [loadingPercent]);
+  }, [loadingPercent, isLoading, cursorMoved]);
 
   useTicker(render, isLoading || !cursorMoved || isMobile || isBlogPost);
   if (isMobile || isBlogPost) return null;

@@ -1,205 +1,80 @@
-# 🚀 3D Portfolio
+# Aaliyan Muhammad's Portfolio
 
-A jaw-dropping developer portfolio packed with interactive 3D animations, buttery smooth transitions, and a space-themed aesthetic. Not your average portfolio template! This one has a fully interactive 3D keyboard where each keycap is a skill.
+A personal portfolio built with Next.js, React, TypeScript, and Tailwind CSS, adapted from [Naresh Khatri's 3D Portfolio](https://github.com/Naresh-Khatri/3d-portfolio).
 
-> **Free to use!** This portfolio is open source. If you use it, a credit/link back would be really appreciated 🙏
+The site includes education and experience, the original interactive 3D keyboard with 24 personalized keys, a typing cat, scrolling project previews, a PDF resume, light/dark modes, and Side B: the music of yanaali.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Naresh-Khatri/3d-portfolio)
+## Run locally
 
-![Portfolio Preview](https://github.com/Naresh-Khatri/Portfolio/blob/main/public/assets/projects-screenshots/portfolio/landing.png?raw=true)
+Use Node.js 24.x. This project pins pnpm 11.20.0 and uses the existing pnpm lockfile; native dependency builds are approved in `pnpm-workspace.yaml`.
 
-## ✨ Features
-
-- **Interactive 3D Keyboard** — Custom Spline keyboard where each keycap represents a skill, revealing titles and descriptions on hover/press
-- **Buttery Animations** — GSAP + Framer Motion powered scroll, hover, and reveal animations
-- **Space Theme** — Floating particles on a dark canvas for a cosmic vibe
-- **Light & Dark Mode** — Full theme support with cheeky disclaimer toasts
-- **Responsive** — Works across all screen sizes
-- **Contact Form** — Email delivery via Resend
-- **Analytics** _(optional)_ — Umami analytics integration
-
-## 🛠️ Tech Stack
-
-| Layer | Technologies |
-|---|---|
-| **Framework** | Next.js 16.2.2, React 19.2.4, TypeScript |
-| **Styling** | Tailwind CSS, Shadcn UI, Aceternity UI |
-| **Animation** | GSAP, Framer Motion |
-| **3D** | Spline Runtime |
-| **Email** | Resend |
-| **Misc** | Lenis (smooth scroll), Zod, next-themes |
-
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js 20.9+ for Next.js 16; use a current LTS release with pnpm 11
-- pnpm 11.20.0
-
-### Installation
-
-1. **Clone the repository:**
-
-    ```bash
-    git clone https://github.com/Naresh-Khatri/3d-portfolio.git
-    cd 3d-portfolio
-    ```
-
-2. **Install dependencies:**
-
-    ```bash
-    pnpm install
-    ```
-
-3. **Set up environment variables:**
-
-    Copy `.env.example` to `.env.local` and fill in the values:
-
-    ```bash
-    cp .env.example .env.local
-    ```
-
-    | Variable | Required | Description |
-    |---|---|---|
-    | `RESEND_API_KEY` | Yes | API key from [Resend](https://resend.com) for the contact form |
-    | `NEXT_PUBLIC_WS_URL` | No | WebSocket server URL for realtime features (cursors, chat, presence) |
-    | `UMAMI_DOMAIN` | No | Umami analytics script URL |
-    | `UMAMI_SITE_ID` | No | Umami website ID |
-
-4. **Run the development server:**
-
-    ```bash
-    pnpm dev
-    ```
-
-5. Open [http://localhost:3000](http://localhost:3000) and see the magic ✨
-
----
-
-## Code checks
-
-Run these before opening a pull request:
-
-```bash
-pnpm lint
-pnpm typecheck
+```powershell
+cd "C:\Users\ali20\OneDrive\Desktop\projects CS\myPortfolio"
+npx --yes pnpm@11.20.0 install --frozen-lockfile
+Copy-Item .env.example .env.local # Only if .env.local does not already exist
+npm run dev
 ```
 
-Next.js 16 no longer runs lint during builds. The ESLint CLI uses `eslint.config.mjs`. New React Compiler diagnostics for refs, immutability, effect state updates, and manual memoization report warnings while existing animation and realtime components are migrated. Hook ordering violations remain errors.
+Open [http://localhost:3000](http://localhost:3000). Keep the terminal running. Saved source changes appear automatically; restart the server after changing environment variables. Press Ctrl+C to stop it.
 
-Blog frontmatter requires a title, summary, and `publishedAt` date in `YYYY-MM-DD` format. Optional fields are `image`, `author`, and a list of `tags`. Invalid frontmatter raises a content error; unknown blog slugs return a 404.
+Dependencies have already been installed for the current local setup, so restarting only requires `npm run dev`.
 
-Files under `public/assets` can be replaced at the same URL and cache for one hour before revalidation. Next.js content-hashed static assets retain immutable caching.
+## Personalize
 
----
+| File | Content |
+| --- | --- |
+| `src/data/config.ts` | Name, emails, bio, education, metadata, social links, resume path |
+| `src/data/constants.ts` | Skills, icons, keyboard order, descriptions, and experience |
+| `src/data/projects.tsx` | Projects, summaries, screenshots, tech stacks, live and source links |
+| `src/data/music.ts` | yanaali's release titles, artwork, dates, Spotify IDs, and colours |
+| `src/components/music/` | Record-sleeve gallery, release dialogs, and Spotify players |
+| `src/components/animated-background.tsx` | Spline interactions, keyboard sounds, and scroll animations |
+| `src/components/animated-background-config.ts` | Keyboard position and rotation for each section |
+| `public/assets/skills-keyboard-personalized.spline` | Original scene with personalized key names and logo textures |
+| `src/app/globals.css` | Theme colors and shared styling |
+| `public/Aaliyan_Muhammad_Resume.pdf` | Resume shown at `/resume` |
+| `public/assets/projects-screenshots/` | Career Compass and audioDecoded previews |
 
-## 🎨 Make It Your Own
+The keyboard preserves the fork's Spline geometry, key transitions, scroll rotations, and bongo cat. Its 24 keys match `KEYBOARD_SKILLS`; remaining technologies appear beneath the Tech Stack section. Key labels and descriptions come from `SKILLS`. Changing a key's logo or object name also requires updating the Spline asset. The untouched original scene remains at `public/assets/skills-keyboard.spline`.
 
-All personal info is centralized in [`src/data/config.ts`](src/data/config.ts). Edit this single file to rebrand the portfolio:
+Hover or tap a key, or use the original shortcuts: `1`–`6`, `Q`–`Y`, `A`–`H`, and `Z`–`N`. Click, tap, or press a key once to enable audio under browser autoplay rules. Reduced motion, unavailable WebGL, or a failed scene load displays an accessible skills grid.
 
-```ts
-const config = {
-  title: "Your Name | Your Title",
-  description: {
-    long: "Your long description for SEO...",
-    short: "Your short description...",
-  },
-  keywords: ["your", "keywords"],
-  author: "Your Name",
-  email: "you@example.com",
-  site: "https://yoursite.com",
+Only Career Compass and audioDecoded are displayed. Their full-page screenshots scroll on hover and return to the top on mouse leave. Blog routes return 404 and are absent from navigation and the sitemap.
 
-  // GitHub stars button in the header
-  githubUsername: "your-github-username",
-  githubRepo: "your-repo-name",
+Side B lives at `/side-b`, reached through the menu or the About card. It features four albums and the Affection Hours mixtape, with locally stored artwork verified against [yanaali's Spotify catalogue](https://open.spotify.com/artist/07aKpXxqGKl3YQ7iSzKtui). Click a cover to open a release; the embedded Spotify player loads only when requested. To add a release, place its cover in `public/assets/music/` and add its metadata to `src/data/music.ts`.
 
-  social: {
-    twitter: "https://x.com/you",
-    linkedin: "https://linkedin.com/in/you",
-    instagram: "https://instagram.com/you",
-    facebook: "https://facebook.com/you",
-    github: "https://github.com/you",
-  },
-};
+## Environment variables
+
+Copy `.env.example` to `.env.local` if needed.
+
+- `NEXT_PUBLIC_SITE_URL`: Set to the portfolio's public URL when deploying. Defaults to `http://localhost:3000`.
+- `RESEND_API_KEY`: Required for sending contact-form messages. Without it, the page still works and the form directs visitors to email Aaliyan.
+- `NEXT_PUBLIC_WS_URL`: Optional realtime backend. Leave empty to disable live cursors, chat, and presence.
+- `UMAMI_SITE_ID`, `UMAMI_DOMAIN`, `NEXT_PUBLIC_GA_ID`: Optional analytics.
+- `NEXT_PUBLIC_LEGACY_HOST`: Optional notice for a previous portfolio domain.
+
+The original template's automatic deployment-hostname reporting is no longer mounted.
+
+## Checks and production build
+
+```powershell
+npm run typecheck
+npm run lint
+npm run build
+npm run start
 ```
 
-Other files you'll want to customize:
+Some original animation/realtime components still produce ESLint warnings; lint errors must be fixed. Google Fonts require network access during compilation.
 
-| File | What to change |
-|---|---|
-| `src/data/projects.tsx` | Your projects, screenshots, descriptions, and tech stacks |
-| `src/data/constants.ts` | Skills list (name, description, icon) and work experience |
-| `public/assets/` | Your images, OG image, and project screenshots |
+## Deploy on Vercel
 
----
+1. Push this repository to GitHub and import `yanaali/myPortfolio` as a new Vercel project.
+2. Use the repository root (`./`) and the Next.js framework preset. `vercel.json` supplies the pinned install and build commands; `package.json` selects Node.js 24.x.
+3. Add `RESEND_API_KEY` in Vercel's environment-variable settings if you want the contact form to send messages. Keep `.env.local` on your computer; never commit it. Leave the realtime and analytics variables unset unless you configure those services.
+4. Deploy. Once you have your public URL, set `NEXT_PUBLIC_SITE_URL` to that HTTPS URL in Vercel and redeploy so canonical URLs, the sitemap, and social previews point to the live site.
 
-## ⌨️ Updating the 3D Keyboard Skills
+Vercel's [Next.js integration](https://vercel.com/docs/frameworks/full-stack/nextjs) handles the pages and API routes. The explicit [install command](https://vercel.com/docs/package-managers) keeps deployment consistent with the local pnpm version. The `.next` output and `node_modules` are generated during deployment and are excluded from Git.
 
-The 3D keyboard keycaps are baked into a Spline file. To update the skills displayed on the keyboard:
+## Credits
 
-1. **Import** the `public/assets/skills-keyboard.spline` file into [Spline](https://spline.design/)
-2. **Unhide** the keycap objects you want to edit
-3. **Update** the logo images on each keycap to your new skill icons
-4. **Rename** each keycap object to match the skill's `name` field in `src/data/constants.ts` (e.g. `js`, `react`, `docker`)
-5. **Hide** all keycap objects again
-6. **Export** the scene and overwrite `public/assets/skills-keyboard.spline`
-
-After updating the Spline file, make sure `src/data/constants.ts` has matching entries for every skill on the keyboard:
-
-```ts
-// Each keycap object name in Spline must match a key in SKILLS
-export const SKILLS: Record<SkillNames, Skill> = {
-  js: { name: "js", label: "JavaScript", shortDescription: "...", ... },
-  react: { name: "react", label: "React", shortDescription: "...", ... },
-  // ... add/remove entries to match your keyboard
-};
-```
-
-The `SkillNames` enum, `SKILLS` record, and the Spline keycap names must all stay in sync for the keyboard interactions to work correctly.
-
----
-
-## 🔌 Realtime Features (Optional)
-
-The portfolio supports optional realtime features powered by a **separate backend API**:
-
-- 🖱️ **Live cursors** — See other visitors' cursors in realtime
-- 👥 **Online presence** — Shows who's currently on the site
-- 💬 **Chat** — Live chat between visitors
-
-These features activate automatically when the `NEXT_PUBLIC_WS_URL` environment variable is set. Without it, the portfolio works perfectly fine as a static site — no realtime features, no backend dependency.
-
-> [!NOTE]
-> The backend API is **not open source**. This is intentional! Too many people have cloned the portfolio and claimed they built it from scratch. The realtime server stays private to keep the live experience unique make make it standout.
-
-
----
-
-## 🚀 Deployment
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Naresh-Khatri/3d-portfolio)
-
-This site is deployed on **Vercel**. To deploy your own:
-
-1. Push your code to a GitHub repository
-2. Connect the repository to [Vercel](https://vercel.com)
-3. Add your environment variables in the Vercel dashboard
-4. Vercel handles the rest — automatic deployments on every push
-
----
-
-## 🤝 Contributing
-
-If you'd like to contribute or suggest improvements, feel free to open an issue or submit a pull request. All contributions are welcome!
-
----
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-If you use this portfolio, a credit or link back to the [original repo](https://github.com/Naresh-Khatri/3d-portfolio) would be much appreciated ❤️
-
-Note on analytics: a deployed copy reports its own hostname once per browser (nothing else — no visitor, page, or referrer data) so I can see where the template gets used.
+Based on [Naresh Khatri's open-source portfolio](https://github.com/Naresh-Khatri/3d-portfolio). The original assets and reusable components remain available for further customization.

@@ -73,7 +73,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {/* add pointer-events-none to every child recursively */}
-        {addClassNameRecursively(children, "pointer-events-none")}
+        {asChild ? children : addClassNameRecursively(children, "pointer-events-none")}
       </Comp>
     );
   }

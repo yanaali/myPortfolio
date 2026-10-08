@@ -9,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 const ExperienceSection = () => {
   return (
     <SectionWrapper
+      id="experience"
       className="flex flex-col items-center justify-center min-h-[120vh] py-20"
     >
       <div className="w-full max-w-4xl px-4 md:px-8 mx-auto">
@@ -88,12 +89,12 @@ const ExperienceCard = ({
                 <Badge
                   key={skillName}
                   variant="outline"
-                  className="gap-2 text-xs font-normal bg-secondary/30 hover:bg-secondary/50 transition-colors border-transparent"
+                  className="gap-2 rounded-full border-transparent bg-secondary/60 px-3 py-1 text-xs font-medium transition-colors hover:bg-secondary"
                 >
-                  <img
-                    src={skill.icon}
-                    alt={skill.label}
-                    className="w-3.5 h-3.5 object-contain opacity-80"
+                  <skill.icon
+                    aria-hidden
+                    className="h-4 w-4 shrink-0"
+                    style={{ color: skill.color }}
                   />
                   {skill.label}
                 </Badge>

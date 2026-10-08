@@ -4,19 +4,19 @@ export const STATES = {
   hero: {
     desktop: {
       scale: { x: 0.20, y: 0.20, z: 0.20 },
-      position: { x: 225, y: -100, z: 0 },
+      position: { x: 300, y: -100, z: 0 },
       rotation: { x: 0, y: 0, z: 0 },
     },
     mobile: {
-      scale: { x: 0.30, y: 0.30, z: 0.30 },
-      position: { x: 0, y: -200, z: 0 },
+      scale: { x: 0.25, y: 0.25, z: 0.25 },
+      position: { x: 0, y: -245, z: 0 },
       rotation: { x: 0, y: 0, z: 0 },
     },
   },
   about: {
     desktop: {
-      scale: { x: 0.4, y: 0.4, z: 0.4 },
-      position: { x: 0, y: -40, z: 0 },
+      scale: { x: 0.13, y: 0.13, z: 0.13 },
+      position: { x: 350, y: -250, z: 0 },
       rotation: {
         x: 0,
         y: Math.PI / 12,
@@ -24,8 +24,8 @@ export const STATES = {
       },
     },
     mobile: {
-      scale: { x: 0.4, y: 0.4, z: 0.4 },
-      position: { x: 0, y: -40, z: 0 },
+      scale: { x: 0.12, y: 0.12, z: 0.12 },
+      position: { x: 0, y: -250, z: 0 },
       rotation: {
         x: 0,
         y: Math.PI / 6,
@@ -64,7 +64,7 @@ export const STATES = {
       },
     },
     mobile: {
-      scale: { x: 0.3, y: 0.3, z: 0.3 },
+      scale: { x: 0.26, y: 0.26, z: 0.26 },
       position: { x: 0, y: -40, z: 0 },
       rotation: {
         x: 0,
@@ -84,7 +84,7 @@ export const STATES = {
       },
     },
     mobile: {
-      scale: { x: 0.3, y: 0.3, z: 0.3 },
+      scale: { x: 0.25, y: 0.25, z: 0.25 },
       position: { x: 0, y: 150, z: 0 },
       rotation: {
         x: Math.PI,

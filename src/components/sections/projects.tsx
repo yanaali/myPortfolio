@@ -4,6 +4,8 @@ import {
   ResponsiveDialog,
   ResponsiveDialogContent,
   ResponsiveDialogTrigger,
+  ResponsiveDialogTitle,
+  ResponsiveDialogDescription,
 } from "../ui/responsive-dialog";
 import { FloatingDock } from "../ui/floating-dock";
 import { ScrollArea } from "../ui/scroll-area";
@@ -19,9 +21,9 @@ import ScrollingPreview from "../scrolling-preview";
 
 const ProjectsSection = () => {
   return (
-    <SectionWrapper id="projects" className="max-w-7xl mx-auto md:min-h-[130vh] px-4">
-      <SectionHeader id="projects" title="Projects" />
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <SectionWrapper id="projects" className="relative mx-auto min-h-screen max-w-7xl px-4 pb-24 pt-20">
+      <SectionHeader id="projects" title="Projects" desc="A few things I've built" className="mb-[24rem]" />
+      <div className="relative z-[2] mx-auto grid max-w-[1040px] grid-cols-1 gap-6 md:grid-cols-2">
         {projects.map((project) => (
           <ProjectCard key={project.id} project={project} />
         ))}
@@ -38,30 +40,17 @@ const ProjectCard = ({ project }: { project: Project }) => {
       <ResponsiveDialog>
         <ResponsiveDialogTrigger className="bg-transparent flex justify-center w-full">
           <div
-            className="group relative w-full max-w-[400px] h-auto rounded-lg overflow-hidden ring-1 ring-white/5"
-            style={{ aspectRatio: "3/2" }}
+            className="group relative aspect-[3/2] w-full max-w-[508px] overflow-hidden rounded-2xl border border-white/10 bg-slate-950 text-left shadow-lg transition-[border-color,box-shadow] hover:border-white/30 hover:shadow-xl"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             onFocus={() => setIsHovered(true)}
             onBlur={() => setIsHovered(false)}
           >
-            {/* `src` can be any aspect ratio (tall pages pan, normal ones fit);
-                the wallpaper is an optional /assets/backgrounds/<id>.jpg. */}
-            <ScrollingPreview
-              src={project.src}
-              alt={project.title}
-              bg={`/assets/backgrounds/${project.id}.jpg`}
-              isHovered={isHovered}
-            />
-            <div className="absolute w-full h-24 bottom-0 left-0 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none z-10">
-              <div className="flex flex-col h-full items-start justify-end p-4">
-                <div className="text-lg text-left [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">
-                  {project.title}
-                </div>
-                <div className="text-xs bg-primary text-primary-foreground rounded-lg w-fit px-2">
-                  {project.category}
-                </div>
-              </div>
+            {project.src && <ScrollingPreview src={project.src} alt={project.title} accent={project.accent} isHovered={isHovered} />}
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#030815] via-[#030815]/10 to-transparent" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex flex-col gap-1 px-5 pb-5 pt-16 sm:px-6">
+              <div className="text-xl font-semibold text-white sm:text-2xl">{project.title}</div>
+              <p className="line-clamp-1 text-sm font-medium text-white/90 sm:text-base">{project.tagline}</p>
             </div>
           </div>
         </ResponsiveDialogTrigger>
@@ -69,11 +58,11 @@ const ProjectCard = ({ project }: { project: Project }) => {
         <ResponsiveDialogContent className="md:max-w-4xl md:h-[85vh] md:!flex md:flex-col md:overflow-hidden md:p-0 md:gap-0">
           {/* Sticky header */}
           <div className="shrink-0 border-b border-border bg-background/80 backdrop-blur-sm px-8 py-5">
-            <div className="flex items-center justify-between gap-4">
-              <div className="flex items-center gap-4 min-w-0">
-                <h4 className="font-display text-xl md:text-2xl font-bold text-foreground tracking-tight truncate">
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <div className="flex flex-wrap items-center gap-4 min-w-0">
+                <ResponsiveDialogTitle className="font-display text-xl md:text-2xl font-bold text-foreground tracking-tight">
                   {project.title}
-                </h4>
+                </ResponsiveDialogTitle>
                 <span className="shrink-0 text-[11px] uppercase tracking-widest text-muted-foreground border border-border rounded-full px-3 py-0.5">
                   {project.category}
                 </span>
@@ -98,11 +87,16 @@ const ProjectCard = ({ project }: { project: Project }) => {
                 )}
               </div>
             </div>
+            <ResponsiveDialogDescription className="mt-3">{project.description}</ResponsiveDialogDescription>
           </div>
 
           {/* Scrollable content */}
           <ScrollArea className="flex-1" type="always" data-lenis-prevent>
             <div className="px-8 py-8">
+              {project.src && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={project.src} alt={`${project.title} interface`} className="mb-8 w-full rounded-xl border border-border" />
+              )}
               {/* Tech stack */}
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
@@ -123,7 +117,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
                     <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-medium">
                       Backend
                     </span>
-                    <FloatingDock items={project.skills.backend} />
+                    <div className="max-w-full overflow-x-auto px-2 pb-3"><FloatingDock items={project.skills.backend} /></div>
                   </div>
                 )}
               </motion.div>

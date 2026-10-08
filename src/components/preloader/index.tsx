@@ -41,8 +41,8 @@ export const usePreloader = () => {
 const LOADING_TIME = 2.5;
 function Preloader({ children, disabled = false }: PreloaderProps) {
   const pathname = usePathname();
-  // Skip the loading splash for the résumé route (and anywhere it's disabled).
-  const skip = disabled || pathname?.startsWith("/resume");
+  // Only the homepage loads the keyboard scene that needs this splash.
+  const skip = disabled || pathname !== "/";
 
   const [isLoading, setIsLoading] = useState(!skip);
   const [loadingPercent, setLoadingPercent] = useState(skip ? 100 : 0);

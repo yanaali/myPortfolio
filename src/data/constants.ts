@@ -1,323 +1,91 @@
-// thoda zada ts ho gya idhar
+import type { IconType } from "react-icons";
+import { SiPython, SiJavascript, SiTypescript, SiC, SiCplusplus, SiSharp, SiReact, SiSpringboot, SiFastapi, SiNodedotjs, SiExpress, SiTailwindcss, SiPostgresql, SiDocker, SiTerraform, SiGit, SiGithub, SiLinux, SiHtml5, SiCss3, SiLangchain, SiOpenai, SiQt, SiNumpy } from "react-icons/si";
+import { FaJava, FaAws, FaMicrosoft, FaDatabase } from "react-icons/fa6";
+import { VscAzureDevops, VscGitPullRequest } from "react-icons/vsc";
+
 export enum SkillNames {
-  JS = "js",
-  TS = "ts",
-  HTML = "html",
-  CSS = "css",
-  REACT = "react",
-  VUE = "vue",
-  NEXTJS = "nextjs",
-  TAILWIND = "tailwind",
-  NODEJS = "nodejs",
-  EXPRESS = "express",
-  POSTGRES = "postgres",
-  MONGODB = "mongodb",
-  GIT = "git",
-  GITHUB = "github",
-  PRETTIER = "prettier",
-  NPM = "npm",
-  FIREBASE = "firebase",
-  WORDPRESS = "wordpress",
-  LINUX = "linux",
-  DOCKER = "docker",
-  NGINX = "nginx",
-  AWS = "aws",
-  GCP = "gcp",
-  VIM = "vim",
-  VERCEL = "vercel",
+  PYTHON = "python", JAVA = "java", TS = "ts", JS = "js", CPP = "cpp", C = "c",
+  CSHARP = "csharp", REACT = "react", SPRING = "spring", FASTAPI = "fastapi",
+  NODEJS = "nodejs", EXPRESS = "express", HTML = "html", CSS = "css",
+  TAILWIND = "tailwind", POSTGRES = "postgres", SQL = "sql", AWS = "aws",
+  DOCKER = "docker", TERRAFORM = "terraform", GIT = "git", GITHUB = "github",
+  AZURE = "azure", DEVOPS = "devops", CICD = "cicd", LINUX = "linux",
+  LANGCHAIN = "langchain", OPENAI = "openai", QT = "qt", NUMPY = "numpy",
 }
 export type Skill = {
-  id: number;
-  name: string;
-  label: string;
-  shortDescription: string;
-  color: string;
-  icon: string;
-};
-export const SKILLS: Record<SkillNames, Skill> = {
-  [SkillNames.JS]: {
-    id: 1,
-    name: "js",
-    label: "JavaScript",
-    shortDescription: "yeeting code into the DOM since '95, no cap! 💯🚀",
-    color: "#f0db4f",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
-  },
-  [SkillNames.TS]: {
-    id: 2,
-    name: "ts",
-    label: "TypeScript",
-    shortDescription:
-      "JavaScript's overachieving cousin who's always flexing 💯🔒",
-    color: "#007acc",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
-  },
-  [SkillNames.HTML]: {
-    id: 3,
-    name: "html",
-    label: "HTML",
-    shortDescription: "the internet's granddad,  still bussin' fr fr! 💀🔥",
-    color: "#e34c26",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
-  },
-  [SkillNames.CSS]: {
-    id: 4,
-    name: "css",
-    label: "CSS",
-    shortDescription: "styling with the ultimate drip, no cap 💁‍♂️🔥",
-    color: "#563d7c",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
-  },
-  [SkillNames.REACT]: {
-    id: 5,
-    name: "react",
-    label: "React",
-    shortDescription: `"use using" 
-using use = useUsing("use")`,
-    color: "#61dafb",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-  },
-  [SkillNames.VUE]: {
-    id: 6,
-    name: "vue",
-    label: "Vue",
-    shortDescription:
-      "the chill pill for your frontend, it hits different! 🟢😌",
-    color: "#41b883",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg",
-  },
-  [SkillNames.NEXTJS]: {
-    id: 7,
-    name: "nextjs",
-    label: "Next.js",
-    shortDescription:
-      "the drama queen of front-end frameworks, and we stan! 👑📜",
-    color: "#fff",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
-  },
-  [SkillNames.TAILWIND]: {
-    id: 8,
-    name: "tailwind",
-    label: "Tailwind",
-    shortDescription: "utility classes hitting different fr fr 🌪️🔥",
-    color: "#38bdf8",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg",
-  },
-  [SkillNames.NODEJS]: {
-    id: 9,
-    name: "nodejs",
-    label: "Node.js",
-    shortDescription: "JavaScript said 'sike, I'm backend now', deadass! 🔙🔚",
-    color: "#6cc24a",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-  },
-  [SkillNames.EXPRESS]: {
-    id: 10,
-    name: "express",
-    label: "Express",
-    shortDescription: "middlewares go dummy hard, no cap! 🚂💨",
-    color: "#fff",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
-  },
-  [SkillNames.POSTGRES]: {
-    id: 11,
-    name: "postgres",
-    label: "PostgreSQL",
-    shortDescription: "SQL but make it fashion, purr 💅🐘",
-    color: "#336791",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
-  },
-  [SkillNames.MONGODB]: {
-    id: 12,
-    name: "mongodb",
-    label: "MongoDB",
-    shortDescription: "flexin' with that NoSQL drip, respectfully! 💪🍃",
-    color: "#336791",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
-  },
-  [SkillNames.GIT]: {
-    id: 13,
-    name: "git",
-    label: "Git",
-    shortDescription: "the code's personal bodyguard, no cap! 🕵️‍♂️🔄",
-    color: "#f1502f",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
-  },
-  [SkillNames.GITHUB]: {
-    id: 14,
-    name: "github",
-    label: "GitHub",
-    shortDescription: "sliding into those pull requests, IYKYK! 🐙",
-    color: "#000000",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
-  },
-  [SkillNames.PRETTIER]: {
-    id: 15,
-    name: "prettier",
-    label: "Prettier",
-    shortDescription: "making your code not a whole mess, thank u next 🧹✨",
-    color: "#f7b93a",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prettier/prettier-original.svg",
-  },
-  [SkillNames.NPM]: {
-    id: 16,
-    name: "npm",
-    label: "NPM",
-    shortDescription: "package manager said 'I gotchu fam', period! 📦💯",
-    color: "#fff",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg",
-  },
-  [SkillNames.FIREBASE]: {
-    id: 17,
-    name: "firebase",
-    label: "Firebase",
-    shortDescription:
-      "your app's ultimate wingman, but watch out, vendor lock-in vibes! 🔥👌",
-    color: "#ffca28",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg",
-  },
-  [SkillNames.WORDPRESS]: {
-    id: 18,
-    name: "wordpress",
-    label: "WordPress",
-    shortDescription: "the grandpa of CMS, still rocking that cane 🧓👴",
-    color: "#007acc",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg",
-  },
-  [SkillNames.LINUX]: {
-    id: 19,
-    name: "linux",
-    label: "Linux",
-    shortDescription: "where 'chmod 777' is the ultimate flex 🔓🙌",
-    color: "#fff",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg",
-  },
-  [SkillNames.DOCKER]: {
-    id: 20,
-    name: "docker",
-    label: "Docker",
-    shortDescription: "The best containerization! 🐳🔥",
-    color: "#2496ed",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
-  },
-  [SkillNames.NGINX]: {
-    id: 21,
-    name: "nginx",
-    label: "NginX",
-    shortDescription: "reverse proxy go zoom zoom, sheesh! 🚗💨",
-    color: "#008000",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg",
-  },
-  [SkillNames.AWS]: {
-    id: 22,
-    name: "aws",
-    label: "AWS",
-    shortDescription:
-      "always extra, making everything more complicated, period! 🌐👨‍💻",
-    color: "#ff9900",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/aws/aws-original.svg",
-  },
-  [SkillNames.GCP]: {
-    id: 25,
-    name: "gcp",
-    label: "Google Cloud",
-    shortDescription:
-      "cloud computing but make it Google vibes, living rent free! ☁️🔥",
-    color: "#4285f4",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg",
-  },
-  [SkillNames.VIM]: {
-    id: 23,
-    name: "vim",
-    label: "Vim",
-    shortDescription: "exit? In this economy? Ight, imma head out! 🚪🏃",
-    color: "#e34c26",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vim/vim-original.svg",
-  },
-  [SkillNames.VERCEL]: {
-    id: 24,
-    name: "vercel",
-    label: "Vercel",
-    shortDescription:
-      "The triangle compony, helps you deploy and go touch grass! 🚀🌿",
-    color: "#6cc24a",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg",
-  },
+  id: number; name: SkillNames; label: string; shortDescription: string;
+  color: string; icon: IconType;
 };
 
-export type Experience = {
-  id: number;
-  startDate: string;
-  endDate: string;
-  title: string;
-  company: string;
-  description: string[];
-  skills: SkillNames[];
-};
+const entries: [SkillNames, string, string, string, IconType][] = [
+  [SkillNames.PYTHON, "Python", "AI services, FastAPI backends, and audio signal processing.", "#3776ab", SiPython],
+  [SkillNames.JAVA, "Java", "Object-oriented programming and Spring Boot REST APIs.", "#e76f00", FaJava],
+  [SkillNames.TS, "TypeScript", "Typed React applications and maintainable frontend code.", "#3178c6", SiTypescript],
+  [SkillNames.JS, "JavaScript", "Interactive interfaces, browser audio, and web applications.", "#b59b00", SiJavascript],
+  [SkillNames.CPP, "C++", "Modular desktop applications and object-oriented architecture.", "#00599c", SiCplusplus],
+  [SkillNames.C, "C", "Systems programming, memory management, and core algorithms.", "#6879a0", SiC],
+  [SkillNames.CSHARP, "C#", "Object-oriented programming and guided programming instruction.", "#8e44ad", SiSharp],
+  [SkillNames.REACT, "React", "Responsive interfaces and enterprise micro-frontends.", "#087ea4", SiReact],
+  [SkillNames.SPRING, "Spring Boot", "Secure Java APIs with validation and PostgreSQL persistence.", "#5b9e24", SiSpringboot],
+  [SkillNames.FASTAPI, "FastAPI", "Python APIs for audio analysis and AI services.", "#009688", SiFastapi],
+  [SkillNames.NODEJS, "Node.js", "JavaScript services and backend tooling.", "#539e43", SiNodedotjs],
+  [SkillNames.EXPRESS, "Express", "REST endpoints and lightweight Node.js services.", "#64748b", SiExpress],
+  [SkillNames.HTML, "HTML", "Semantic, accessible structure for web interfaces.", "#e34f26", SiHtml5],
+  [SkillNames.CSS, "CSS / Sass", "Responsive layouts, theming, and polished interfaces.", "#1572b6", SiCss3],
+  [SkillNames.TAILWIND, "Tailwind CSS", "Utility-based styling for responsive React applications.", "#0891b2", SiTailwindcss],
+  [SkillNames.POSTGRES, "PostgreSQL", "Persistent application data and pgvector-powered retrieval.", "#4169e1", SiPostgresql],
+  [SkillNames.SQL, "SQL", "Relational data modeling, queries, and application persistence.", "#457b9d", FaDatabase],
+  [SkillNames.AWS, "AWS", "Cloud deployments with ECS, RDS, S3, Cognito, and CloudWatch.", "#d97706", FaAws],
+  [SkillNames.DOCKER, "Docker", "Containerized web, Java, and Python services.", "#2496ed", SiDocker],
+  [SkillNames.TERRAFORM, "Terraform", "Reproducible AWS infrastructure as code.", "#844fba", SiTerraform],
+  [SkillNames.GIT, "Git", "Version control, code reviews, and collaborative delivery.", "#f05032", SiGit],
+  [SkillNames.GITHUB, "GitHub", "Project repositories and collaborative development workflows.", "#64748b", SiGithub],
+  [SkillNames.AZURE, "Azure", "Cloud fundamentals; Microsoft Azure Fundamentals certified.", "#0078d4", FaMicrosoft],
+  [SkillNames.DEVOPS, "Azure DevOps", "Agile workflows and enterprise release delivery.", "#0078d7", VscAzureDevops],
+  [SkillNames.CICD, "CI/CD", "Reliable releases with TeamCity, Bitbucket, and Azure DevOps.", "#2563eb", VscGitPullRequest],
+  [SkillNames.LINUX, "Linux / Unix", "Development environments, command-line tools, and systems concepts.", "#b58a00", SiLinux],
+  [SkillNames.LANGCHAIN, "LangChain", "Document chunking and source-grounded AI retrieval.", "#2f7660", SiLangchain],
+  [SkillNames.OPENAI, "OpenAI API", "Embeddings and AI-assisted career guidance.", "#168570", SiOpenai],
+  [SkillNames.QT, "Qt", "Cross-platform C++ desktop interfaces and study planning.", "#41a327", SiQt],
+  [SkillNames.NUMPY, "NumPy / DSP", "Numerical audio analysis with NumPy, Librosa, and SciPy.", "#4d77cf", SiNumpy],
+];
+export const SKILLS = Object.fromEntries(entries.map(([name, label, shortDescription, color, icon], i) =>
+  [name, { id: i + 1, name, label, shortDescription, color, icon }]
+)) as Record<SkillNames, Skill>;
 
-export const EXPERIENCE: Experience[] = [
-  {
-    id: 1,
-    startDate: "Dec 2024",
-    endDate: "Present",
-    title: "Full Stack Developer",
-    company: "OmniNexus Sdn Bhd",
-    description: [
-      "Built a custom image editor from scratch, cutting $4.8k/year in SaaS costs.",
-      "Architected async job queues processing 1k+ AI tasks daily with bulletproof reliability.",
-      "Optimized media delivery pipeline, slashing asset load times by 40%.",
-      "Shipped high-impact features end-to-end from requirements to production.",
-    ],
-    skills: [
-      SkillNames.NEXTJS,
-      SkillNames.TS,
-      SkillNames.REACT,
-      SkillNames.NODEJS,
-      SkillNames.POSTGRES,
-      SkillNames.MONGODB,
-      SkillNames.DOCKER,
-      SkillNames.GCP,
-    ],
-  },
-  {
-    id: 2,
-    startDate: "Apr 2022",
-    endDate: "Dec 2024",
-    title: "Freelance Full Stack Developer",
-    company: "Self-employed",
-    description: [
-      "Transformed chaotic Excel sheets into polished internal tools for various clients.",
-      "Shipped dashboards and custom CMS platforms tailored to each client's workflow.",
-      "Automated repetitive processes, improving efficiency and reducing human error.",
-      "Focused on clean, maintainable code and interfaces that users actually enjoy.",
-    ],
-    skills: [
-      SkillNames.REACT,
-      SkillNames.VUE,
-      SkillNames.NODEJS,
-      SkillNames.EXPRESS,
-      SkillNames.MONGODB,
-      SkillNames.POSTGRES,
-      SkillNames.TAILWIND,
-      SkillNames.WORDPRESS,
-    ],
-  },
+// Row order and key names match the personalized version of the original Spline scene.
+export const KEYBOARD_SKILLS: SkillNames[] = [
+  SkillNames.JS, SkillNames.TS, SkillNames.HTML, SkillNames.CSS, SkillNames.REACT, SkillNames.PYTHON,
+  SkillNames.JAVA, SkillNames.TAILWIND, SkillNames.NODEJS, SkillNames.EXPRESS, SkillNames.POSTGRES, SkillNames.SPRING,
+  SkillNames.GIT, SkillNames.GITHUB, SkillNames.FASTAPI, SkillNames.SQL, SkillNames.CPP, SkillNames.AZURE,
+  SkillNames.LINUX, SkillNames.DOCKER, SkillNames.TERRAFORM, SkillNames.AWS, SkillNames.LANGCHAIN, SkillNames.OPENAI,
 ];
 
-export const themeDisclaimers = {
-  light: [
-    "Warning: Light mode emits a gazillion lumens of pure radiance!",
-    "Caution: Light mode ahead! Please don't try this at home.",
-    "Only trained professionals can handle this much brightness. Proceed with sunglasses!",
-    "Brace yourself! Light mode is about to make everything shine brighter than your future.",
-    "Flipping the switch to light mode... Are you sure your eyes are ready for this?",
-  ],
-  dark: [
-    "Light mode? I thought you went insane... but welcome back to the dark side!",
-    "Switching to dark mode... How was life on the bright side?",
-    "Dark mode activated! Thanks you from the bottom of my heart, and my eyes too.",
-    "Welcome back to the shadows. How was life out there in the light?",
-    "Dark mode on! Finally, someone who understands true sophistication.",
-  ],
+export type Experience = {
+  id: number; startDate: string; endDate: string; title: string;
+  company: string; description: string[]; skills: SkillNames[];
 };
+export const EXPERIENCE: Experience[] = [
+  {
+    id: 1, startDate: "May 2026", endDate: "Aug 2026",
+    title: "Software Developer Intern", company: "Guidewire Software · Mississauga, ON",
+    description: [
+      "Shipped 50+ production defect fixes using React, TypeScript, HTML, CSS/Sass, and the Jutro design system.",
+      "Delivered Agent Experience features, including Whatfix integration and Dockerized test deployments.",
+      "Supported 15+ application and micro-frontend deployments with Bitbucket, TeamCity, and Azure DevOps.",
+      "Designed an AI-assisted testing workflow that saved approximately 10 minutes per defect setup.",
+    ],
+    skills: [SkillNames.REACT, SkillNames.TS, SkillNames.CSS, SkillNames.DOCKER, SkillNames.DEVOPS, SkillNames.CICD],
+  },
+  {
+    id: 2, startDate: "Nov 2024", endDate: "Oct 2025",
+    title: "Programming Tutor", company: "EduXora · London, ON",
+    description: [
+      "Taught Java and C/C# to over 100 first-year students through tailored lessons, guided practice, and feedback.",
+      "Helped improve average test scores by 20% and coursework grades by 25%.",
+      "Led interactive problem-solving sessions that strengthened programming confidence and student engagement.",
+    ],
+    skills: [SkillNames.JAVA, SkillNames.C, SkillNames.CSHARP],
+  },
+];
 

@@ -2,6 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   cacheComponents: true,
+  // The original template cached dev chunks for a year. A new URL namespace
+  // bypasses those old browser entries; current dev responses revalidate.
+  deploymentId: process.env.NODE_ENV === "development" ? "portfolio-dev-v2" : undefined,
   async headers() {
     return [
       {
@@ -18,13 +21,7 @@ const nextConfig = {
       {
         source: "/assets/(.*)",
         headers: [
-          { key: "Cache-Control", value: "public, max-age=3600, must-revalidate" },
-        ],
-      },
-      {
-        source: "/_next/static/(.*)",
-        headers: [
-          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+          { key: "Cache-Control", value: process.env.NODE_ENV === "production" ? "public, max-age=3600, must-revalidate" : "no-store" },
         ],
       },
     ];

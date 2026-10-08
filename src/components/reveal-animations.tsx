@@ -87,7 +87,7 @@ export const BoxReveal = ({
   }, [isInView, mainControls, slideControls, reducedMotion]);
 
   return (
-    <div ref={ref} style={{ position: "relative", width, overflow: "hidden" }}>
+    <div ref={ref} style={{ position: "relative", width, overflow: "hidden", paddingBlock: "0.15em", marginBlock: "-0.15em" }}>
       <motion.div
         variants={{
           hidden: { opacity: reducedMotion ? 1 : 0, y: reducedMotion ? 0 : 75 },

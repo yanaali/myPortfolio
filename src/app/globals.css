@@ -81,6 +81,8 @@ body {
      labels, nav) follows this; elements with an explicit font-bold/semibold
      utility keep their own weight. */
   html {
+    /* Motion measures section offsets against the document scroll container. */
+    position: relative;
     font-weight: 500;
   }
 
