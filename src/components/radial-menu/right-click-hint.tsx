@@ -36,11 +36,11 @@ export function RightClickHint({ dismissed }: { dismissed: boolean }) {
       <AnimatePresence>
         {visible && (
           <motion.div
-            initial={{ opacity: 0, y: 10, x: '-50%' }}
-            animate={{ opacity: 1, y: 0, x: '-50%' }}
-            exit={{ opacity: 0, y: 10, x: '-50%' }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
             transition={{ duration: 0.4, ease: 'easeOut' }}
-            className="fixed top-16 left-1/2 z-[50] pointer-events-none"
+            className="fixed bottom-6 right-6 z-[50] pointer-events-none"
           >
             <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-neutral-900/80 backdrop-blur-md border border-white/10 shadow-lg">
               <span className="text-sm text-white/70">Right-click anywhere to react</span>

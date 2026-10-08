@@ -103,6 +103,28 @@ body {
   }
 }
 
+/* A vertical fade for the large section titles, adapted to each theme. */
+.heading-fade {
+  display: inline-block;
+  background-image: linear-gradient(180deg, #020817 8%, #1b253a 46%, #64748b 80%, #9aa5b5 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark .heading-fade {
+  background-image: linear-gradient(180deg, #ffffff 8%, #eceef3 46%, #747c8b 79%, #303746 100%);
+}
+
+@media (forced-colors: active) {
+  .heading-fade, .dark .heading-fade {
+    background-image: none;
+    color: CanvasText;
+    -webkit-text-fill-color: CanvasText;
+  }
+}
+
 /* canvas-confetti injects a canvas with inline z-index */
 body > canvas {
   pointer-events: none !important;

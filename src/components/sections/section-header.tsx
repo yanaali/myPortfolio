@@ -15,7 +15,7 @@ export const SectionHeader = ({ id, title, desc, className }: { id: string, titl
               "text-foreground"
             )}
           >
-            {title}
+            <span className="heading-fade">{title}</span>
           </h2>
         </BoxReveal>
       </Link>

@@ -44,5 +44,19 @@ const projects: Project[] = [
     },
     content: <p className="leading-relaxed text-muted-foreground">audioDecoded combines a responsive drag-and-drop interface and live microphone recording with a Python/FastAPI audio analysis backend. Librosa, NumPy, and SciPy power tempo and musical-key estimation, while PostgreSQL stores upload metadata and analysis history.</p>,
   },
+  {
+    id: "my-portfolio", category: "Web · Creative", title: "My Portfolio",
+    description: "An interactive developer portfolio with a 3D tech keyboard, project previews, and Side B: the music of yanaali.",
+    tagline: "Interactive developer portfolio", accent: "#8b5cf6",
+    src: "/assets/projects-screenshots/my-portfolio/landing.png",
+    screenshots: [],
+    github: "https://github.com/yanaali/myPortfolio",
+    live: "https://aaliyanm.dev/",
+    skills: {
+      frontend: stack(SkillNames.REACT, SkillNames.TS, SkillNames.TAILWIND),
+      backend: [],
+    },
+    content: <p className="leading-relaxed text-muted-foreground">My personal portfolio brings together software projects, experience, education, and music. Built with Next.js, React, TypeScript, and Tailwind CSS, it features an interactive Spline keyboard with key sounds, scrolling project previews, theme switching, and an animated album gallery. Adapted from Naresh Khatri&apos;s open-source portfolio and deployed on Vercel.</p>,
+  },
 ];
 export default projects;

@@ -33,13 +33,13 @@ Dependencies have already been installed for the current local setup, so restart
 | `public/assets/skills-keyboard-personalized.spline` | Original scene with personalized key names and logo textures |
 | `src/app/globals.css` | Theme colors and shared styling |
 | `public/Aaliyan_Muhammad_Resume.pdf` | Resume shown at `/resume` |
-| `public/assets/projects-screenshots/` | Career Compass and audioDecoded previews |
+| `public/assets/projects-screenshots/` | Career Compass, audioDecoded, and portfolio previews |
 
 The keyboard preserves the fork's Spline geometry, key transitions, scroll rotations, and bongo cat. Its 24 keys match `KEYBOARD_SKILLS`; remaining technologies appear beneath the Tech Stack section. Key labels and descriptions come from `SKILLS`. Changing a key's logo or object name also requires updating the Spline asset. The untouched original scene remains at `public/assets/skills-keyboard.spline`.
 
 Hover or tap a key, or use the original shortcuts: `1`–`6`, `Q`–`Y`, `A`–`H`, and `Z`–`N`. Click, tap, or press a key once to enable audio under browser autoplay rules. Reduced motion, unavailable WebGL, or a failed scene load displays an accessible skills grid.
 
-Only Career Compass and audioDecoded are displayed. Their full-page screenshots scroll on hover and return to the top on mouse leave. Blog routes return 404 and are absent from navigation and the sitemap.
+Career Compass, audioDecoded, and this portfolio are displayed with colour-matched gradient cards. Their screenshots scroll on hover and return to the top on mouse leave. Blog routes return 404 and are absent from navigation and the sitemap.
 
 Side B lives at `/side-b`, reached through the menu or the About card. It features four albums and the Affection Hours mixtape, with locally stored artwork verified against [yanaali's Spotify catalogue](https://open.spotify.com/artist/07aKpXxqGKl3YQ7iSzKtui). Click a cover to open a release; the embedded Spotify player loads only when requested. To add a release, place its cover in `public/assets/music/` and add its metadata to `src/data/music.ts`.
 

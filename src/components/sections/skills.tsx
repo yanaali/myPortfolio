@@ -22,7 +22,7 @@ export default function SkillsSection() {
       : "relative h-[110dvh] w-full md:h-[150dvh]"}>
       <SectionHeader id="skills" title="Tech Stack"
         desc={showGrid ? "Tools I build with" : "(hint: hover, tap, or press a key)"}
-        className={showGrid ? "static mb-14" : undefined} />
+        className={showGrid ? "static mb-14" : "z-10"} />
       <ul className={showGrid ? "mx-auto grid w-full max-w-5xl grid-cols-2 gap-3 px-4 sm:grid-cols-3 md:grid-cols-4" : "sr-only"}>
         {KEYBOARD_SKILLS.map(name => {
           const skill = SKILLS[name];
