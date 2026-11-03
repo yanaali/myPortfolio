@@ -8,9 +8,7 @@ import { Button } from "@/components/ui/button";
 import ResumeDoodle from "./resume-doodle";
 import { config } from "@/data/config";
 
-const RESUME_PATH = config.resume;
-
-export default function ResumeView() {
+export default function ResumeView({ src }: { src: string }) {
   return (
     <div className="flex min-h-screen flex-col font-sans">
       {/* Hide the global nav on mobile, only while this page is mounted */}
@@ -36,10 +34,10 @@ export default function ResumeView() {
             <ArrowLeft className="h-4 w-4" />
             Back to portfolio
           </Link>
-          <Button>
+          <Button asChild>
             <a
-              href={RESUME_PATH}
-              download
+              href={src}
+              download="Aaliyan_Muhammad_Resume.pdf"
               className="flex gap-2 text-sm transition-colors hover:text-foreground"
             >
               <Download className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />
@@ -59,7 +57,7 @@ export default function ResumeView() {
           className="aspect-[210/297] w-full overflow-hidden rounded-2xl bg-white shadow-xl"
         >
           <ResumeDoodle
-            src={`${RESUME_PATH}#toolbar=0&navpanes=0&view=FitH`}
+            src={`${src}#toolbar=0&navpanes=0&view=FitH`}
             title={`${config.author} — Resume`}
           />
         </motion.div>

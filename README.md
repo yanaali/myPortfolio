@@ -43,6 +43,35 @@ Career Compass, audioDecoded, and this portfolio are displayed with colour-match
 
 Side B lives at `/side-b`, reached through the menu or the About card. It features four albums and the Affection Hours mixtape, with locally stored artwork verified against [yanaali's Spotify catalogue](https://open.spotify.com/artist/07aKpXxqGKl3YQ7iSzKtui). Click a cover to open a release; the embedded Spotify player loads only when requested. To add a release, place its cover in `public/assets/music/` and add its metadata to `src/data/music.ts`.
 
+## Updating the resume
+
+The site displays `public/Aaliyan_Muhammad_Resume.pdf`; the deployed site uses the
+copy included in its most recent Vercel deployment. Downloading a new PDF from
+Overleaf does not change that copy automatically.
+
+After downloading your updated resume, run this from the project directory:
+
+```powershell
+npm run resume:update -- "C:\Users\ali20\OneDrive\Desktop\SWD Aaliyan Muhammad.pdf"
+```
+
+Use the actual download path if it differs. This command checks that the input
+looks like a complete PDF and replaces the portfolio copy without changing its
+filename. It leaves the previous resume in place if validation fails. Commit and
+push the updated PDF to publish it through Vercel. The viewer and download link
+include a version derived from the PDF contents, so each changed PDF gets a new
+URL after deployment.
+
+Overleaf's free plan has no built-in Git/GitHub synchronization. Its
+[Git integration and GitHub synchronization](https://docs.overleaf.com/integrations-and-add-ons/git-integration-and-github-synchronization)
+are premium features. GitHub synchronization is manually triggered, and the
+compiled PDF is not part of the project's source files. An automated publishing
+pipeline needs to fetch the LaTeX source, compile it, and publish the resulting
+PDF; simply linking repositories does not keep the deployed PDF current.
+
+The update command runs only when invoked. It does not watch your downloads,
+connect to Overleaf, commit, push, or deploy changes.
+
 ## Environment variables
 
 Copy `.env.example` to `.env.local` if needed.
