@@ -19,8 +19,8 @@ const projects: Project[] = [
   {
     id: "career-compass", category: "Full-stack · AI", title: "Career Compass",
     description: "A career workspace for tracking applications, managing documents, and asking a source-grounded AI copilot.",
-    tagline: "AI-powered career workspace", accent: "#f59e0b",
-    src: "/assets/projects-screenshots/career-compass/landing.png",
+    tagline: "AI-powered career workspace", accent: "#6b956d",
+    src: "/assets/projects-screenshots/career-compass/home.png",
     screenshots: [],
     github: "https://github.com/yanaali/Career-Compass",
     live: "https://careercompass.aaliyanm.dev/",
