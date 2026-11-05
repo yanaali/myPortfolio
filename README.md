@@ -1,6 +1,6 @@
 # Aaliyan Muhammad's Portfolio
 
-A personal portfolio built with Next.js, React, TypeScript, and Tailwind CSS, adapted from [Naresh Khatri's 3D Portfolio](https://github.com/Naresh-Khatri/3d-portfolio).
+A personal portfolio built with Next.js, React, TypeScript, and Tailwind CSS.
 
 The site includes education and experience, the original interactive 3D keyboard with 24 personalized keys, a typing cat, scrolling project previews, a PDF resume, light/dark modes, and Side B: the music of yanaali.
 
